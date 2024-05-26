@@ -22,7 +22,7 @@ pipeline{
         stage('upload artifact'){
             steps{
                sh 'curl -uadmin:AP7bxAPKkWrSXTi9tv2SeCxA3Wn -T \
-             *.tgz\
+             *.tgz \
               "http://52.91.134.127:8081/artifactory/utc-nodejs/*utc-app-${BUILD_ID}.tgz"'
             }
            
