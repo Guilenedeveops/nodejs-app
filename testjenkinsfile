@@ -14,8 +14,11 @@ pipeline{
                         
         }
         stage('package'){
-            steps{
+          steps{
                 sh 'npm pack'
             }
         }
+        
+            
+        
     }
