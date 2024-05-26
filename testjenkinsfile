@@ -3,7 +3,7 @@ pipeline{
                 args '-u root:root'}}
 
     stages{
-        stage( 'dep install'){
+        stage( 'Dep install'){
             
                 steps{  
                     //sh 'npm cache clean'             
@@ -12,13 +12,12 @@ pipeline{
             }
             }
                         
-        }
+        
         stage('package'){
           steps{
                 sh 'npm pack'
             }
         }
-        
-            
-        
+                            
+    }
     }
