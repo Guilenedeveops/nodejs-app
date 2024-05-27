@@ -1,32 +1,39 @@
-pipeline{
-      agent { docker { image 'node:14'
-                args '-u root:root'}}
+pipeline {
+    agent {
+        docker {
+            image 'node:14'
+            args '-u root:root'
+        }
+    }
 
-    stages{
-        stage( 'Dep install'){
-            
-                steps{  
-                    //sh 'npm cache clean'             
-               // sh 'sudo schown -R 995:993 "/ .npm"'
+    stages {
+        stage('Dep install') {
+            steps {
+                // sh 'npm cache clean'
+                // sh 'sudo chown -R 995:993 "/.npm"'
                 sh 'npm install'
             }
-            }
-                        
+        }
         
-        stage('package'){
-          steps{
+        stage('package') {
+            steps {
                 sh 'rm -rf *.tgz || echo ""'
-                sh'npm pack'
+                sh 'npm pack'
             }
         }
+<<<<<<< HEAD
         stage('upload artifact'){
             steps{               
              sh 'curl -uadmin:AP7bxAPKkWrSXTi9tv2SeCxA3Wn -T
               *.tgz         
               http://52.3.247.241:8081/artifactory/utc-nodejs/utc-app-${BUILD_ID}.tgz'
+=======
+        
+        stage('upload artifact') {
+            steps {
+                sh 'curl -u admin:AP7bxAPKkWrSXTi9tv2SeCxA3Wn -T *.tgz http://52.3.247.241:8081/artifactory/utc-nodejs/utc-app-${BUILD_ID}.tgz'
+>>>>>>> 65bbcc86aa1a786630b04448aaba28fbfaa73f16
             }
-           
         }
-                            
     }
-    }
+}
